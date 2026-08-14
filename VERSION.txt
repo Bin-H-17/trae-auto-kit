@@ -1,0 +1,5 @@
+Trae Auto Kit
+Version: 2026-07-31b
+Products: Trae CN + Trae Work (SOLO CN)
+Buttons: 仍要运行 / 执行(确认执行) / 继续 / 删除 / 全部接受 / 运行
+Entry: 交接说明.md

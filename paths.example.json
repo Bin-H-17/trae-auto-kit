@@ -1,0 +1,35 @@
+{
+  "TraeData1": "D:\\\\MultiAccount\\\\Data\\\\Trae\\\\Extra",
+  "TraeCnExe": "D:\\\\Apps\\\\TraeCN\\\\Trae CN.exe",
+  "WorkData1": "D:\\\\MultiAccount\\\\Data\\\\TraeWork\\\\Secondary",
+  "KitRoot_example": "D:\\\\Apps\\\\trae-auto-kit",
+  "ports": {
+    "work": [
+      39341,
+      39342,
+      39343
+    ],
+    "work-intl": [
+      39541,
+      39542,
+      39543
+    ],
+    "intl": [
+      39441,
+      39442,
+      39443
+    ],
+    "cn": [
+      39241,
+      39242,
+      39243
+    ]
+  },
+  "TraeIntlExe": "D:\\\\Apps\\\\Trae-Intl\\\\Trae.exe",
+  "_comment": "新机实际路径（2026-08-03 已对齐 MultiAccount / D 盘安装）",
+  "TraeWorkExe": "D:\\\\AI\\\\Trae_Work\\\\TRAE SOLO CN.exe",
+  "note": "日常启动请用 D:\\\\MultiAccount\\\\Launch-*（已 ensure-watcher）；setup-shortcuts.ps1 仅重建桌面快捷方式时用",
+  "TraeWorkIntlExe": "D:\\\\Apps\\\\TraeWork-Intl\\\\TRAE SOLO.exe",
+  "TraeData2": "D:\\\\MultiAccount\\\\Data\\\\Trae\\\\Student",
+  "WorkData2": "D:\\\\MultiAccount\\\\Data\\\\TraeWork\\\\Tertiary"
+}

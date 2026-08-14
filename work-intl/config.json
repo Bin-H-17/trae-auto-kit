@@ -1,0 +1,41 @@
+{
+    "blacklist":  [
+                      "下一个",
+                      "取消",
+                      "保留",
+                      "Next",
+                      "Cancel",
+                      "Keep"
+                  ],
+    "watchIntervalMs":  5000,
+    "ports":  [
+                  39540,
+                  39541,
+                  39542,
+                  39543,
+                  39544
+              ],
+    "enableDelete":  true,
+    "whitelist":  [
+                      "仍要运行",
+                      "执行",
+                      "确认执行",
+                      "确认运行",
+                      "继续运行",
+                      "继续",
+                      "删除",
+                      "全部接受",
+                      "运行",
+                      "Run",
+                      "Continue",
+                      "Execute",
+                      "Delete",
+                      "Accept All",
+                      "Still run",
+                      "Confirm",
+                      "Keep running"
+                  ],
+    "product":  "trae-work-intl",
+    "pollIntervalMs":  1500,
+    "aggressiveMode":  false
+}

@@ -1,0 +1,30 @@
+{
+    "blacklist":  [
+                      "下一个",
+                      "取消",
+                      "保留"
+                  ],
+    "watchIntervalMs":  5000,
+    "ports":  [
+                  39240,
+                  39241,
+                  39242,
+                  39243,
+                  39244
+              ],
+    "enableDelete":  true,
+    "whitelist":  [
+                      "仍要运行",
+                      "执行",
+                      "确认执行",
+                      "确认运行",
+                      "继续运行",
+                      "继续",
+                      "删除",
+                      "全部接受",
+                      "运行"
+                  ],
+    "product":  "trae-cn",
+    "pollIntervalMs":  1500,
+    "aggressiveMode":  false
+}

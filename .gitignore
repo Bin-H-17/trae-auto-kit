@@ -1,0 +1,27 @@
+# Logs
+logs/
+*.log
+
+# Runtime state
+paths.json
+
+# Backup files
+*.bak-*
+
+# OS files
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Temporary
+tmp/
+temp/
