@@ -1,6 +1,12 @@
 # Trae Auto Kit
 
-自动代点 Trae 的确认按钮（运行 / 仍要运行 / 继续 / 删除 / 全部接受）。
+[中文](#简介) | [English](#overview)
+
+---
+
+## 简介
+
+自动代点 Trae 的确认按钮（仍要运行 / 执行 / 继续 / 删除 / 全部接受 / 运行）。
 
 支持 Trae CN、Trae Work、Trae Intl、Trae Work Intl 四个产品线。
 
@@ -69,15 +75,7 @@ trae-auto-kit/
 │   ├── cdp.mjs             # CDP 通信工具
 │   └── load-script.mjs     # 脚本加载器
 ├── cn/                      # Trae CN（端口 39241-43）
-│   ├── config.json
-│   ├── inject.mjs
-│   ├── watch.mjs
-│   └── *.bat
 ├── work/                    # Trae Work（端口 39341-43）
-│   ├── config.json
-│   ├── inject.mjs
-│   ├── watch.mjs
-│   └── *.bat
 ├── intl/                    # Trae Intl
 ├── work-intl/               # Trae Work Intl
 ├── setup-shortcuts.ps1      # 快捷方式重建脚本
@@ -94,9 +92,7 @@ trae-auto-kit/
   "ports": [39340, 39341, 39342, 39343, 39344, 39345, 39346],
   "watchIntervalMs": 5000,
   "pollIntervalMs": 1500,
-  "enableDelete": true,
-  "whitelist": ["仍要运行", "执行", "继续", "删除", "全部接受", "运行"],
-  "blacklist": ["下一个", "取消", "保留"]
+  "enableDelete": true
 }
 ```
 
@@ -111,7 +107,80 @@ trae-auto-kit/
 
 ## 致谢
 
-Inspired by [luw2007/trae-auto-accept](https://github.com/luw2007/trae-auto-accept)（MIT）。
+Inspired by [luw2007/trae-auto-accept](https://github.com/luw2007/trae-auto-accept)（MIT）。见 `vendor-notes/`。
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+## Overview
+
+Auto-click Trae IDE confirmation buttons (Still Run / Execute / Continue / Delete / Accept All / Run).
+
+Supports Trae CN, Trae Work, Trae Intl, and Trae Work Intl.
+
+## Features
+
+- Auto-click confirmation buttons (priority: Still Run → Execute → Continue → Delete → Accept All → Run)
+- Draggable floating panel with click counter and status
+- Minimize/expand toggle
+- Optional auto-delete toggle
+- Auto-reconnect on disconnect (watch mode)
+- Position memory (persists across refreshes)
+
+## Quick Start
+
+### 1. Prepare Trae Shortcut
+
+Open Trae with a remote debugging port (see `交接说明.md` §4).
+
+Run `setup-shortcuts.ps1` to recreate desktop shortcuts:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File setup-shortcuts.ps1
+```
+
+### 2. Start Auto-Click
+
+**One-shot inject:**
+
+```bash
+node work/inject.mjs   # Trae Work
+node cn/inject.mjs     # Trae CN
+```
+
+**Persistent watch (recommended):**
+
+```bash
+work/常驻监视.bat       # Trae Work
+cn/常驻监视.bat         # Trae CN
+启动全部监视.bat        # All
+```
+
+The **Trae Auto Kit** panel appears in the top-right corner when active.
+
+## Will Click / Won't Click
+
+| Auto-click (priority) | Won't click |
+|------------------------|-------------|
+| Still Run → Execute → Continue → Delete → Accept All → Run | Next, Cancel, Keep |
+
+Panel is draggable and collapsible; "Delete" can be unchecked.
+
+## How It Works
+
+Injects JavaScript into Trae via Chrome DevTools Protocol (CDP) on the local debugging port. The script:
+
+1. Creates a floating panel in the top-right corner
+2. Scans for buttons every 1.5 seconds
+3. Clicks matching confirmation buttons by priority
+4. Watch mode checks every 5 seconds and re-injects if the panel is lost
+
+## Acknowledgements
+
+Inspired by [luw2007/trae-auto-accept](https://github.com/luw2007/trae-auto-accept) (MIT). See `vendor-notes/`.
 
 ## License
 
