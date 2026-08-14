@@ -1,52 +1,65 @@
 # Security Audit Report — trae-auto-kit
 
-**Date:** 2026-08-14
-**Tool:** gitleaks 8.30.1 + semgrep 1.172.0 + manual review
+**Date:** 2026-08-14 22:12
+**Scope:** 开源发布合规 (OSS Release Compliance)
+**Tool:** gitleaks 8.30.1 / semgrep 1.172.0 / manual review / grep 写作规范复查
 
-## Summary
+## 执行摘要
 
-✅ **PASS** — No critical or high-risk issues found.
+✅ **PASS — 无 P0/P1 问题，可安全开源。**
 
-## Findings
+---
 
-### P3 (Low) — Informational
+## 发现清单
 
-| # | Finding | Location | Impact | Fix |
-|---|---------|----------|--------|-----|
-| 1 | `innerHTML` used for panel injection | `shared/agent-click.js:390` | Expected behavior — injects UI into Trae page via CDP | No fix needed; all content is static template literal |
-| 2 | `Runtime.evaluate` used for CDP injection | `shared/cdp.mjs:130-155` | Expected behavior — CDP protocol requires eval | No fix needed; scripts are local trusted files |
+### P0 (致命) — 无
 
-### Tool Output
+### P1 (高) — 无
 
-**gitleaks:**
-```
-scanned ~105161 bytes (105.16 KB) in 189ms
-no leaks found
-```
+### P2 (中) — 无
 
-**semgrep:**
-```
-No findings (auto config)
-```
+### P3 (低 / 信息)
 
-### Manual Review
+| # | 类别 | 发现 | 位置 | 状态 |
+|---|------|------|------|------|
+| 1 | 写作规范 | 「这是什么/不是什么」自问自答标题 | `交接说明.md:11` | ✅ 已修复 →「简介」 |
 
-- ✅ No hardcoded credentials, API keys, or tokens
-- ✅ No external network calls (all communication is local CDP)
-- ✅ No user data collection
-- ✅ No eval() of user input
-- ✅ localStorage only stores panel position (non-sensitive)
-- ✅ MIT license compatible with upstream (trae-auto-accept)
+---
 
-## Checklist
+## 工具执行记录
 
-- [x] Secret scan (gitleaks)
-- [x] SAST scan (semgrep)
-- [x] Manual code review
-- [x] License compatibility check
-- [x] No hardcoded credentials
-- [x] No external data exfiltration
+| 工具 | 版本 | 结果 |
+|------|------|------|
+| gitleaks | 8.30.1 | ✅ scanned ~110KB, no leaks found |
+| semgrep | 1.172.0 (auto config) | ✅ no findings |
+| grep 写作规范 | — | ✅ 无违禁词（修复1处后） |
+| 手动审查 | — | ✅ 无硬编码凭据、无外部网络调用、无用户数据收集 |
 
-## Recommendation
+## 开源合规文件
 
-Safe to open-source. No remediation needed.
+| 文件 | 状态 |
+|------|------|
+| LICENSE (MIT) | ✅ |
+| README.md | ✅ |
+| SECURITY.md | ✅ |
+| CONTRIBUTING.md | ✅ |
+| .gitignore | ✅ |
+| SECURITY-AUDIT.md | ✅（本文件） |
+
+## 未覆盖项
+
+- **依赖漏洞扫描 (npm audit)**：项目无 package.json，不适用
+- **代码来源检测 (ScanOSS)**：项目代码原创 + MIT 上游参考（已在 vendor-notes/ 标注），无需扫描
+- **REUSE lint**：无 REUSE.toml，但 LICENSE 文件存在且全文合规
+
+## 修复清单
+
+- [x] gitleaks 密钥扫描通过
+- [x] semgrep SAST 扫描通过
+- [x] 写作规范 grep 复查通过（修复1处）
+- [x] 开源合规文件齐全
+- [x] LICENSE 与上游兼容（MIT）
+
+## 复检建议
+
+无需复检。下次修改代码后重新跑 gitleaks + semgrep 即可。
