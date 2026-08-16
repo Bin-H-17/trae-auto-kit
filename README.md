@@ -1,4 +1,6 @@
 # Trae Auto Kit
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Bin-H-17/trae-auto-kit/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Bin-H-17/trae-auto-kit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 [中文](#简介) | [English](#overview)
 
